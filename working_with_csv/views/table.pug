@@ -1,0 +1,31 @@
+
+
+doctype html
+html
+  head
+    title csv
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+  body
+    table(class='table')
+      thead
+        tr
+          th(scope="col")
+            p #
+          - for (var x = 0; x < len_max; x++)
+            th(scope="col")
+              p= x
+          th(scope="col")
+            p average  
+      tbody
+        - var ind= 0
+        each row in csv_data
+          tr
+            th(scope="row")
+              p= ind
+            each k,v in row
+              th
+                p= k 
+          - ind+=1
+    
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
