@@ -1,0 +1,33 @@
+
+
+doctype html
+html
+  head
+    title csv
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+  body
+    table(class='table')
+      thead
+        tr
+          th(scope="col")
+            p Name
+          th(scope="col")
+            p Author
+          th(scope="col")
+            p Year
+          
+      tbody
+        each row in data
+          tr
+            th(scope="row")
+              p= row['name']
+            th(scope="row")
+              p= row['author']
+            th(scope="row")
+              p= row['year']
+
+
+
+    
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
