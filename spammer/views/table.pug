@@ -1,0 +1,94 @@
+doctype html
+html
+  head
+    title csv
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+  body
+    div(class="container")
+        div(class="row")
+        div(class="col-12")
+          table(class="table table-bordered")
+            thead
+              tr
+                th(scope="col")= 'email'
+                th(scope="col")= 'name'
+                th(scope="col")= 'surname'
+                th(scope="col")= 'patronymic_name'
+                th(scope="col")= ''
+            tbody
+              - num = 0
+              each row in emails
+                - num++
+                  tr
+                    td
+                      div(class="custom-control custom-checkbox")
+                        input(type="checkbox" class="custom-control-input" name='my_check' value=row['email'] id=num)
+                        label(class="custom-control-label" for=num)= row['email']
+                    td= row['first_name']
+                    td= row['last_name']
+                    td= row['patronymic_name']
+                    td
+                      button(type='button', class='c-btn-blue c-btn-circle c-btn-uppercase w-100', value="del", onclick='delete_email("'+row["email"]+'")')='Delete'
+
+    div(class="form-group" align="center")
+      p(align='center')= 'text'
+      select(class="selectpicker w-100", onchange="document.getElementById('text').value=this.options[this.selectedIndex].value")
+            option= 'No shema'
+            each row in shemas
+              option(value=row['text'])=row['name']
+      textarea(id='text' class=('w-100'))
+      button(type='button', class='c-btn-blue c-btn-circle c-btn-uppercase w-100', value="send mails", onclick='send_emails()')='send emails'
+      
+    hr(style="width:100%;text-align:middle;margin-left:0;height:5px;border-width:0;color:gray;background-color:red")
+    form(method='POST', action='/add', class='form-horizontal')
+        div(class="form-group")
+            label(for="email_input" class=('control-label col-sm-2'))= 'Email address'
+            div(class="col-sm-10")
+              input(type="email" class="form-control" id="email_input" name='email' placeholder="Enter email")
+        div(class="form-group")
+            label(for="name_input" class=('control-label col-sm-2'))= 'name'
+            div(class="col-sm-10")
+              input(type="text" class="form-control" id="name_input" name='name' placeholder="Enter name")
+        div(class="form-group")
+            label(for="l_name_input" class=('control-label col-sm-2'))= 'last name'
+            div(class="col-sm-10")
+              input(type="text" class="form-control" id="l_name_input" name='surname' placeholder="last name")
+        div(class="form-group")
+            label(for="p_name_input" class=('control-label col-sm-2'))= 'patronymic name'
+            div(class="col-sm-10")
+              input(type="text" class="form-control" id="p_name_input" name='p_name' placeholder="patronymic name")
+        button(type="submit" class="c-btn-blue c-btn-circle c-btn-uppercase w-100")= 'Add/Edit'
+
+
+    script(type='text/javascript').
+        function send_emails() {
+          var checkboxes = document.getElementsByName('my_check');
+          var checkboxesChecked = [];
+          for (var i=0; i<checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                checkboxesChecked.push(checkboxes[i].value);
+            }
+          }
+          res = checkboxesChecked.length > 0 ? checkboxesChecked : null;
+          var xhr = new XMLHttpRequest();
+          var url = "/send";
+          xhr.open("POST", url, true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          var data = JSON.stringify({'emails':res, 'text':document.getElementById('text').value});
+          xhr.send(data);
+          console.log(res);
+          alert("sended");
+        }
+
+        function delete_email(email) {
+          var xhr = new XMLHttpRequest();
+          var url = "/delete";
+          xhr.open("POST", url, true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          var data = JSON.stringify({'email':email});
+          xhr.send(data);
+          document.location.reload();
+        }
+
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
