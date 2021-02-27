@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title csv
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+  body
+    div(class="d-flex justify-content-center row", id='cont')
+    
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
+
+    script(type='text/javascript').
+        (function worker() {
+          console.log($)
+          $.ajax({
+            url: '/get_all_cards', 
+            success: function(data) {
+              $('#cont').html('')
+              for (row of data){
+                $('#cont').append(get_templ_div(row))
+              }
+            },
+            complete: function() {
+              setTimeout(worker, 5000);
+            }
+          });
+        })();
+
+        function get_templ_div(dict){
+          return `<div class="card w-75 text-white bg-dark mb-3">
+                    <div class='card-body'>
+                        <h5 class='card-title'> ${dict['title']}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"> ${dict['annotation']} </h6>
+                        <p class="card-text"> ${dict['text']} </p>
+                    </div>
+                  </div>`
+        }
+
