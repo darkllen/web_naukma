@@ -1,0 +1,23 @@
+html
+  head
+    title csv
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+  body
+    form(method='POST', action='/add', class='form-horizontal')
+        div(class="form-group")
+            label(for="title_input" class=('control-label col-sm-2'))= 'Title'
+            div(class="col-sm-10")
+              input(type="text" class="form-control" id="title_input" name='title' placeholder="Enter title")
+        div(class="form-group")
+            label(for="annotation_input" class=('control-label col-sm-2'))= 'Annotation'
+            div(class="col-sm-10")
+              input(type="text" class="form-control" id="annotation_input" name='annotation' placeholder="Enter annotation")
+        div(class="form-group")
+            label(for="text_input" class=('control-label col-sm-2'))= 'Text'
+            div(class="col-sm-10")
+              input(type="text" class="form-control" id="text_input" name='text' placeholder="Enter text")
+        button(type="submit" class="c-btn-blue c-btn-circle c-btn-uppercase w-100")= 'Add'
+        
+
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
