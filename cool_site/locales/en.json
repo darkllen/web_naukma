@@ -1,0 +1,22 @@
+{
+	"main": "Main",
+	"books": "Books",
+	"eng": "ENG",
+	"ukr": "UKR",
+	"form_name": "name",
+	"form_surname": "surname",
+	"form_email": "email",
+	"form_phone": "phone",
+	"form_text": "text",
+	"Submit": "Submit",
+	"cool_site": "CoolSite",
+	"details_button": "Show/Hide details",
+	"main_title": "Site with books",
+	"main_text": "We have different books here, choose what you want!",
+	"aboutus": "About us",
+	"aboutus_title": "Some information about us",
+	"aboutus_text": "We like books",
+	"request_sended":"Request is sent",
+	"confirmation_waiting":"Email confirmation is needed",
+	"confirmed":"Confirmed"
+}

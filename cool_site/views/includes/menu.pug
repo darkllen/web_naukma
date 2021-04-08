@@ -1,0 +1,18 @@
+style.
+      .menu {
+        background-color: #{config.color_back};
+      }
+      .text {
+        color:  #{config.color_text} !important;
+      }
+      .text_active {
+        color:  #{config.color_active_text} !important;
+      }
+nav(class="navbar navbar-dark menu")
+    div
+        span(class="navbar-brand font-weight-bold text")=__(config.domain_name)+" | "
+        each menu in config.menus
+            a(class="navbar-brand text" href='/'+menu.href+'?lng='+lang class=active===menu.name ? "text_active": undefined)=__(menu.name)
+    div
+        a(class="btn btn-outline-success" type="button" href='/'+active+'?lng=en')=__('eng')
+        a(class="btn btn-outline-success" type="button" href='/'+active+'?lng=ukr')=__('ukr')

@@ -1,0 +1,15 @@
+extends includes/page_template.pug
+
+block vars
+  if locals.alert
+    script.
+      window.onload = function() {
+        alert('Confirmed');
+      };
+  -var active='main'
+
+block content
+  div(style="background-image:url('"+config.img_main+"'); height:25vh;")
+  h1(class='text-center')=__('main_title')
+  div=__('main_text')
+

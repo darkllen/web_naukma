@@ -1,0 +1,24 @@
+script
+    if config.need_confirmation
+        include mail.js 
+    else 
+        include no_mail.js
+    include send_mail.js
+form(id="send_text") 
+    div(class='form-froup')
+        label(for='name')=__('form_name')
+        input(type="text" class="form-control" name='name' id="name" placeholder=__('form_name'))
+    div(class='form-froup')
+        label(for='surname')=__('form_surname')
+        input(type="text" class="form-control" name='surname' id="surname" placeholder=__('form_surname'))
+    div(class='form-froup')
+        label(for='email')=__('form_email')
+        input(type="text" class="form-control" name='email' id="email" placeholder=__('form_email'))
+    div(class='form-froup')
+        label(for='phone')=__('form_phone') + " xxx-xxx-xx-xx"
+        input(type="tel" class="form-control" name='phone' id="phone" placeholder=__('form_phone'))
+    div(class='form-froup')
+        label(for='text')=__('form_text')
+        textarea(class="form-control" name='text' id="text" rows="3")
+    br
+    button(type="submit" class="c-btn-blue c-btn-circle c-btn-uppercase w-100")=__('Submit')

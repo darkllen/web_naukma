@@ -1,0 +1,13 @@
+extends includes/page_template.pug
+
+block vars
+  -var active='books'
+
+block content
+  div(class="d-flex justify-content-center row", id="book")
+    each book in books
+      book(seen=-1, full_info=book.full_info, short_info=book.short_info, title=book.title, details_button=__('details_button'))
+  script(src="/js/home.bundle.js")
+
+
+

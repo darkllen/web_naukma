@@ -1,0 +1,24 @@
+{
+    "site_name":"Cool_Site",
+    "domain_name":"cool_site",
+    "img_main":"1.jpg",
+    "color_text":"#fff",
+    "color_back":"#343a40",
+    "color_active_text":"#28a745",
+    "need_confirmation":true,
+    "menus":[
+        {
+            "href":"main",
+            "name":"main"
+        },
+        {            
+            "href":"aboutus",
+            "name":"aboutus"
+        },
+        {            
+            "href":"books",
+            "name":"books"
+        }
+    ]
+
+}
